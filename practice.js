@@ -66,6 +66,21 @@ const convertLetter = (offset, letter) => {
 }
 
 
+const analyzeArray = (array) => {
+  let orderedArray = array.sort();
+  let min = orderedArray[0];
+  let max = orderedArray[orderedArray.length-1];
+  let length = orderedArray.length;
+  let average = (orderedArray.reduce((a, b) => a + b, 0)) / length;
+  let results = {
+    average: average,
+    min: min,
+    max: max,
+    length: length,
+  }
+  return results;
+}
+
 
 
 
@@ -77,5 +92,6 @@ module.exports = {
   capitalized,
   reversed,
   Calculator,
-  cipher
+  cipher, 
+  analyzeArray
 }
