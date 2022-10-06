@@ -1,5 +1,5 @@
 
-import {capitalized, reversed, Calculator} from './practice.js'
+import {capitalized, reversed, Calculator, cipher} from './practice.js'
 
 test('capitalize first letter', () => {
   expect(capitalized('string')).toBe('String');
@@ -31,4 +31,28 @@ test('multiply', () => {
 
 test('divide', () => {
   expect(Calculator.divide(12, 2)).toBe(6);
+})
+
+test('basic cipher', () => {
+  expect(cipher(1, 'abcdefg')).toBe('bcdefgh');
+})
+
+test('ignore punctuation', () => {
+  expect(cipher(1, 'ab!cd$ef&g')).toBe('bc!de$fg&h');
+})
+
+test('keep same case', () => {
+  expect(cipher(5, 'ABcdEf*&^%G')).toBe('FGhiJk*&^%L');
+})
+
+test('alphabet wrap', () => {
+  expect(cipher(4,'wxYZ')).toBe('abCD');
+})
+
+test('negative offset', () => {
+  expect(cipher(-5, 'abCde')).toBe('vwXyz');
+})
+
+test('ignore spaces', () => {
+  expect(cipher(7, 'Hello World!!!')).toBe('Olssv Dvysk!!!');
 })
